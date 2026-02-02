@@ -1,0 +1,3 @@
+[submodule "prioritas"]
+	path = prioritas
+	url = https://github.com/gabriel-dears/prioritas.git
