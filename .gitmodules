@@ -1,3 +1,6 @@
 [submodule "prioritas"]
 	path = prioritas
 	url = https://github.com/gabriel-dears/prioritas.git
+[submodule "notification-app"]
+	path = notification-app
+	url = https://github.com/gabriel-dears/prioritas-notification-app.git
