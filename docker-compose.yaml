@@ -4,8 +4,8 @@ services:
   # ==========================================
   backend-app:
     build:
-      context: ./prioritas
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: prioritas/Dockerfile
     container_name: prioritas-backend
     ports:
       - "8080:8080"
