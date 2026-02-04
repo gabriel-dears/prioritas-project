@@ -29,23 +29,23 @@ services:
   # ==========================================
   # 2. Notification Service (Consumer)
   # ==========================================
-#  notification-app:
-#    build:
-#      context: ./notification-app
-#      dockerfile: Dockerfile
-#    container_name: prioritas-notification
-#    environment:
-#      - SERVER_PORT=8081
-#      # Configurações do RabbitMQ
-#      - SPRING_RABBITMQ_HOST=rabbitmq
-#      - SPRING_RABBITMQ_PORT=5672
-#      - SPRING_RABBITMQ_USERNAME=guest
-#      - SPRING_RABBITMQ_PASSWORD=guest
-#    depends_on:
-#      rabbitmq:
-#        condition: service_started
-#    networks:
-#      - prioritas-net
+  notification-app:
+    build:
+      context: .
+      dockerfile: notification-app/Dockerfile
+    container_name: prioritas-notification
+    environment:
+      - SERVER_PORT=8081
+      # Configurações do RabbitMQ
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+    depends_on:
+      rabbitmq:
+        condition: service_started
+    networks:
+      - prioritas-net
 
   # ==========================================
   # 3. Database

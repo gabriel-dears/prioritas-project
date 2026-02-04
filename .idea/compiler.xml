@@ -5,6 +5,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="prioritas-project.notification-app" options="-parameters" />
+      <module name="prioritas-project.notification-app.main" options="-parameters" />
+      <module name="prioritas-project.notification-app.test" options="-parameters" />
       <module name="prioritas-project.prioritas" options="-parameters" />
       <module name="prioritas-project.prioritas.main" options="-parameters" />
       <module name="prioritas-project.prioritas.test" options="-parameters" />
