@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.24"
-    `java-library` // Importante para compartilhar dependências transitivas corretamente
+    `java-library`
 }
 
 group = "br.com.fiap.adj8.phase5.prioritas"
@@ -19,7 +19,6 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
-// Desativa a geração de JAR executável (caso o plugin do Spring fosse aplicado acidentalmente)
 tasks.jar {
     enabled = true
 }
