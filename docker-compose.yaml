@@ -13,7 +13,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://backend-db:5432/prioritas
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
-      # Configurações do RabbitMQ
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_RABBITMQ_USERNAME=guest
@@ -22,7 +21,7 @@ services:
       backend-db:
         condition: service_healthy
       rabbitmq:
-        condition: service_started
+        condition: service_healthy
     networks:
       - prioritas-net
 
@@ -41,11 +40,11 @@ services:
       - SPRING_RABBITMQ_USERNAME=guest
       - SPRING_RABBITMQ_PASSWORD=guest
       - EMAIL_FROM=gabrielalcantarars@gmail.com
-      - EMAIL_PASS="vamm guna lujg xiql"
-      - EMAIL_TARGET_LIST="gabrielalcantarars@gmail.com"
+      - EMAIL_PASS=vammgunalujgxiql
+      - EMAIL_TARGET_LIST=gabrielalcantarars@gmail.com
     depends_on:
       rabbitmq:
-        condition: service_started
+        condition: service_healthy
     networks:
       - prioritas-net
 
@@ -76,11 +75,17 @@ services:
     image: rabbitmq:3-management
     container_name: prioritas-rabbitmq
     ports:
-      - "5672:5672"   # Porta para as Aplicações (AMQP)
-      - "15672:15672" # Porta para o Navegador (Management UI)
+      - "5672:5672"
+      - "15672:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
     networks:
       - prioritas-net
 
